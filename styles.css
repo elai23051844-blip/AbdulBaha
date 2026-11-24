@@ -988,6 +988,23 @@ p, li, a, h1, h2, h3 {
   text-decoration: none;
 }
 .footer a:hover { color: var(--gold-100) }
+.footer__org {
+  margin-top: .85rem !important;
+  color: rgba(254, 251, 243, .85);
+}
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .55rem 1.4rem;
+  margin-top: 1rem;
+  font-size: .95rem;
+}
+.footer__links a {
+  border-bottom: 1px solid rgba(230, 188, 94, .35);
+  padding-bottom: 1px;
+}
+.footer__links a:hover { border-bottom-color: var(--gold-100) }
 .top {
   display: inline-flex;
   margin-top: 18px;
