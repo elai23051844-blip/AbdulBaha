@@ -134,6 +134,20 @@
   if (veilContinue) {
     veilContinue.addEventListener('click', goToLife);
   }
+  var veilClose = $('#veil-close');
+  if (veilClose) {
+    veilClose.addEventListener('click', function () {
+      if (!veil) return;
+      veil.classList.add('is-leaving');
+      veil.classList.remove('is-on');
+      setTimeout(function () {
+        veil.hidden = true;
+        veil.classList.remove('is-leaving');
+        veil.setAttribute('aria-hidden', 'true');
+        doc.body.classList.remove('veil-lock');
+      }, reduceMotion ? 0 : 700);
+    });
+  }
 
   /* RSVP + молитвенный путь */
   (function rsvp() {

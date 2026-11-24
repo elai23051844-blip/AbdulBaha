@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Абдул-Баха · День Завета · 26 ноября · Минск</title>
-  <meta name="description" content="Приглашение на День Завета — вечер в честь Абдул-Баха. 26 ноября, сбор с 18:30, начало 19:00. Национальный Центр бахаи, пр. Независимости, 12-30. Фильм, беседы, песни и угощения.">
+  <title>День Завета · 26 ноября · Минск</title>
+  <meta name="description" content="Приглашение на День Завета. 26 ноября, сбор с 18:30, начало 19:00. Национальный Центр бахаи, пр. Независимости, 12-30.">
   <meta name="theme-color" content="#060B18">
   <meta name="api-base" content="">
-  <meta property="og:title" content="Абдул-Баха · День Завета · 26 ноября">
-  <meta property="og:description" content="Приглашаем вас на праздник в Национальный Центр бахаи. Сбор с 18:30, начало в 19:00.">
+  <meta property="og:title" content="День Завета · 26 ноября · Минск">
+  <meta property="og:description" content="Приглашаем вас на День Завета. Сбор с 18:30, начало в 19:00.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/abdul-baha-portrait.jpg">
   <script>
+    /* Нужен для GitHub Pages (/AbdulBaha/), иначе картинки ломаются без слэша */
     (function () {
-      var path = location.pathname || '';
-      if (location.hostname.indexOf('github.io') !== -1 && path.indexOf('/AbdulBaha') === 0) {
-        var b = document.createElement('base');
-        b.href = '/AbdulBaha/';
-        document.head.insertBefore(b, document.head.firstChild);
+      if (location.hostname.indexOf('github.io') === -1) return;
+      var b = document.createElement('base');
+      b.href = '/AbdulBaha/';
+      document.head.insertBefore(b, document.head.firstChild);
+      if (!/\/AbdulBaha\/?$/.test(location.pathname) && location.pathname.indexOf('/AbdulBaha/') !== 0) return;
+      if (location.pathname === '/AbdulBaha') {
+        history.replaceState(null, '', '/AbdulBaha/' + location.search + location.hash);
       }
     })();
   </script>
@@ -45,22 +48,20 @@
   </svg>
 
   <header class="nav" role="banner">
-    <a class="nav__brand" href="#top" aria-label="Абдул-Баха — в начало страницы">
+    <a class="nav__brand" href="#top" aria-label="Начало страницы">
       <svg class="ico ico--fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star9"/></svg>
-      Абдул-Баха
+      День Завета
     </a>
-    <nav class="nav__links" aria-label="Разделы страницы">
-      <a href="#about">О Нём</a>
-      <a href="#program">Вечер</a>
-      <a href="#shrine">Усыпальница</a>
-      <a href="#stories">Истории</a>
+    <nav class="nav__links" aria-label="Разделы">
+      <a href="#about">О вечере</a>
+      <a href="#program">Программа</a>
       <a href="#when">Когда и где</a>
     </nav>
     <button type="button" class="btn btn--sm btn--gold js-rsvp" data-source="nav">Я приду</button>
   </header>
 
   <main>
-    <section class="hero" id="top" aria-label="Абдул-Баха · День Завета">
+    <section class="hero" id="top" aria-label="День Завета">
       <div class="hero__sky" aria-hidden="true">
         <div class="hero__stars" id="stars"></div>
         <div class="hero__grain"></div>
@@ -73,8 +74,7 @@
           <circle class="orbit" cx="100" cy="100" r="94" stroke="rgba(246,214,128,.28)" stroke-width="1"/>
           <circle class="orbit orbit--mid" cx="100" cy="100" r="78" stroke="rgba(246,214,128,.4)" stroke-width="1" stroke-dasharray="4 10"/>
           <circle class="orbit" cx="100" cy="100" r="58" stroke="rgba(246,214,128,.5)" stroke-width="1"/>
-          <!-- Ровная девятиконечная звезда бахаи -->
-          <path class="star9-path" d="M100.000,20.000 L113.681,62.412 L151.423,38.716 L134.641,80.000 L178.785,86.108 L139.392,106.946 L169.282,140.000 L125.712,130.642 L127.362,175.175 L100.000,140.000 L72.638,175.175 L74.288,130.642 L30.718,140.000 L60.608,106.946 L21.215,86.108 L65.359,80.000 L48.577,38.716 L86.319,62.412 Z" fill="url(#g)" opacity=".97"/>
+          <path d="M100.000,20.000 L113.681,62.412 L151.423,38.716 L134.641,80.000 L178.785,86.108 L139.392,106.946 L169.282,140.000 L125.712,130.642 L127.362,175.175 L100.000,140.000 L72.638,175.175 L74.288,130.642 L30.718,140.000 L60.608,106.946 L21.215,86.108 L65.359,80.000 L48.577,38.716 L86.319,62.412 Z" fill="url(#g)" opacity=".97"/>
           <circle cx="100" cy="100" r="6" fill="#FFF8E0"/>
           <defs>
             <linearGradient id="g" x1="100" y1="20" x2="100" y2="175" gradientUnits="userSpaceOnUse">
@@ -85,70 +85,42 @@
       </div>
 
       <div class="hero__text">
-        <p class="eyebrow eyebrow--light hero__eyebrow">Приглашение · Минск · 26 ноября</p>
-        <h1 class="hero__title"><span class="grad">Абдул-Баха</span></h1>
-        <p class="hero__sub">День Завета — вечер в честь Совершенного Примера. Приглашаем вас разделить его вместе с нами.</p>
+        <p class="eyebrow eyebrow--light hero__eyebrow">Приглашение · Минск</p>
+        <h1 class="hero__title"><span class="grad">День Завета</span></h1>
+        <p class="hero__sub">Вечер в память об Абдул-Баха. Приходите — будем рады видеть вас.</p>
 
         <div class="plaque">
           <span class="plaque__d">26</span>
           <span class="plaque__m">ноября · среда</span>
-          <span class="plaque__n">День Завета</span>
+          <span class="plaque__n">сбор с 18:30 · начало 19:00</span>
         </div>
 
         <div class="hero__where">
           <span>
-            <svg class="ico ico--line" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>
-            Сбор 18:30 · начало 19:00
-          </span>
-          <span>
             <svg class="ico ico--line" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
-            <a href="https://yandex.ru/maps/?text=Минск,%20пр.%20Независимости,%2012-30" target="_blank" rel="noopener">Национальный Центр бахаи · пр. Независимости, 12-30</a>
+            <a href="https://yandex.ru/maps/?text=Минск,%20пр.%20Независимости,%2012-30" target="_blank" rel="noopener">Национальный Центр бахаи · <span class="nw">пр.&nbsp;Независимости, 12-30</span></a>
           </span>
         </div>
 
         <div class="hero__cta">
           <button type="button" class="btn btn--lg btn--gold js-rsvp" data-source="hero">Я приду</button>
-          <a class="btn btn--lg btn--line" href="#program">Программа</a>
+          <a class="btn btn--lg btn--line" href="#when">Подробнее</a>
         </div>
-        <p class="hero__note">Нажмите — откроется молитва, а затем история Его жизни.</p>
       </div>
     </section>
-
-    <div class="ribbon" aria-hidden="true">
-      <div class="ribbon__track">
-        <ul class="ribbon__list">
-          <li>Служение человечеству <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Единство человечества <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Верность Завету <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Любовь ко всем народам <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Совершенный Пример <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Смирение и достоинство <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-        </ul>
-        <ul class="ribbon__list" aria-hidden="true">
-          <li>Служение человечеству <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Единство человечества <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Верность Завету <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Любовь ко всем народам <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Совершенный Пример <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-          <li>Смирение и достоинство <svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></li>
-        </ul>
-      </div>
-    </div>
 
     <section class="section section--ivory" id="about">
       <div class="wrap about reveal">
         <figure class="about__photo">
-          <img src="assets/abdul-baha-portrait.jpg" width="800" height="1066" alt="Портрет Абдул-Баха" loading="eager" decoding="async" fetchpriority="high">
+          <img src="assets/abdul-baha-portrait.jpg" width="800" height="1066" alt="Абдул-Баха" loading="eager" decoding="async" fetchpriority="high">
         </figure>
         <div class="about__body">
-          <p class="eyebrow">О Нём</p>
+          <p class="eyebrow">О вечере</p>
           <div class="orn" aria-hidden="true"><svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></div>
-          <h3>Слуга Баха</h3>
-          <p class="about__epi">Совершенный Пример · Центр Завета</p>
-          <span class="about__fact">1844 — 1921</span>
-          <p>Абдул-Баха — старший сын Бахауллы и избранный Им Центр Завета. Всю жизнь Он служил людям: утешал страждущих, наставлял ищущих, строил общину и словом, и делом.</p>
-          <p>После вознесения Бахауллы Он стал щитом единства: хранил Завет, разъяснял учение и явил миру, как выглядит жизнь, посвящённая Богу и служению человечеству.</p>
-          <p>26 ноября община бахаи отмечает День Завета — день, когда мы вспоминаем Его стан и обновляем верность тому пути, который Он указал.</p>
+          <h3>День Завета</h3>
+          <p class="about__epi">В честь Абдул-Баха — Совершенного Примера</p>
+          <p>26&nbsp;ноября община отмечает День Завета. Мы приглашаем вас провести этот вечер вместе: помолиться, послушать рассказы, посмотреть фильм и разделить угощение.</p>
+          <p>Двери открыты для друзей общины и для всех, кому близки единство и служение.</p>
         </div>
       </div>
     </section>
@@ -156,154 +128,57 @@
     <section class="section section--ivory" id="program" style="padding-top:0">
       <div class="wrap">
         <header class="section__head reveal">
-          <p class="eyebrow">Вечер</p>
+          <p class="eyebrow">Программа</p>
           <h2>Что нас ждёт</h2>
           <div class="orn" aria-hidden="true"><svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></div>
-          <p class="lead">Духовные беседы, песни и номера, фильм к столетию Абдул-Баха, рассказ о Завете и тёплое угощение.</p>
         </header>
-        <ol class="program">
+        <ol class="program program--compact">
           <li class="step reveal">
             <div class="step__n">I</div>
-            <h3>Беседы</h3>
-            <p>Духовные размышления о жизни Абдул-Баха и смысле Завета — тихие и сердечные.</p>
+            <h3>Беседы и рассказ о Завете</h3>
+            <p>Духовные беседы и рассказ участников кружка Рухи&nbsp;8.1.</p>
           </li>
           <li class="step reveal">
             <div class="step__n">II</div>
             <h3>Фильм</h3>
-            <p>Просмотр фильма, выпущенного к 100-летию Абдул-Баха — о Его влиянии на сердца людей.</p>
+            <p>Фильм, выпущенный к столетию Абдул-Баха.</p>
           </li>
           <li class="step reveal">
             <div class="step__n">III</div>
-            <h3>Завет</h3>
-            <p>Участники кружка Рухи 8.1 подготовят рассказ по теме Завета — живое слово общины.</p>
+            <h3>Песни и номера</h3>
+            <p>Музыка и творческие выступления.</p>
           </li>
           <li class="step reveal">
             <div class="step__n">IV</div>
-            <h3>Песни и номера</h3>
-            <p>Музыка и творческие выступления — то, что поднимает сердце и сближает нас.</p>
-          </li>
-          <li class="step reveal">
-            <div class="step__n">V</div>
-            <h3>Угощения</h3>
-            <p>Чай и общий стол. Можно принести что-нибудь своё — радость делится легче.</p>
-          </li>
-          <li class="step reveal">
-            <div class="step__n">VI</div>
-            <h3>Общение</h3>
-            <p>Тёплая встреча друзей общины и всех, кому близки эти идеалы. Двери открыты.</p>
+            <h3>Угощение</h3>
+            <p>Чай и общий стол. Можно принести что‑нибудь с собой.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="section section--night" id="shrine">
-      <div class="wrap">
-        <header class="section__head reveal">
-          <p class="eyebrow">Усыпальница</p>
-          <h2>Место упокоения</h2>
-          <div class="orn" aria-hidden="true"><svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></div>
-          <p class="lead">Его останки покоятся у Усыпальницы Баба на горе Кармель. В мире бахаи возводится новая Усыпальница — отражение Его смирения и величия.</p>
-        </header>
-
-        <div class="shrine">
-          <article class="shrine__row reveal">
-            <figure class="shrine__media">
-              <img src="assets/shrine-bab.jpg" width="1600" height="900" alt="Усыпальница Баба на горе Кармель — bahai.org" loading="lazy" decoding="async">
-            </figure>
-            <div class="shrine__copy">
-              <p class="tag">Хайфа · гора Кармель · bahai.org</p>
-              <h3>У Усыпальницы Баба</h3>
-              <p>28 ноября 1921 года Абдул-Баха вознёсся в Хайфе. После всенародных похорон Его останки были положены в комнате Усыпальницы Баба — рядом с Тем, Чьё тело Он сам бережно упокоил на Кармеле в 1909 году.</p>
-            </div>
-          </article>
-
-          <article class="shrine__row shrine__row--rev reveal">
-            <figure class="shrine__media">
-              <img src="assets/shrine-new.jpg" width="1600" height="900" alt="Замысел Усыпальницы Абдул-Баха — официальный рендер BWNS / bahai.org" loading="lazy" decoding="async">
-            </figure>
-            <div class="shrine__copy">
-              <p class="tag">Сад Ридван · между Аккой и Хайфой · news.bahai.org</p>
-              <h3>Новая Усыпальница</h3>
-              <p>Всемирный Дом Справедливости призвал возвести Усыпальницу Абдул-Баха вблизи Сада Ридван — на дуге между святынями Акки и Хайфы. Здание должно отразить и Его высокий стан, и Его смирение.</p>
-            </div>
-          </article>
-
-          <article class="shrine__feature reveal">
-            <div class="shrine__copy shrine__copy--center">
-              <p class="tag">Усыпальница Абдул-Баха · официальные изображения bahai.org</p>
-              <h3>Его желание</h3>
-              <p>Абдул-Баха желал быть погребённым «под песками между Хайфой и Аккой» — на пути паломников. В молитве Он просил: «Сделай меня прахом на пути Твоих возлюбленных». Этот образ стал сердцем замысла Его Усыпальницы.</p>
-            </div>
-            <div class="collage" role="group" aria-label="Усыпальница Абдул-Баха — официальные ракурсы с bahai.org">
-              <figure class="collage__main">
-                <img src="assets/shrine-ab-angle3.jpg" width="1600" height="900" alt="Усыпальница Абдул-Баха — ночной вид садов, официальный рендер" loading="lazy" decoding="async">
-              </figure>
-              <figure class="collage__side">
-                <img src="assets/shrine-ab-angle1.jpg" width="1600" height="900" alt="Усыпальница Абдул-Баха — центральная площадь под решёткой" loading="lazy" decoding="async">
-              </figure>
-              <figure class="collage__side">
-                <img src="assets/shrine-ab-angle2.jpg" width="1600" height="900" alt="Усыпальница Абдул-Баха — интерьер с витражами" loading="lazy" decoding="async">
-              </figure>
-              <figure class="collage__wide">
-                <img src="assets/shrine-abdul-baha-collage.jpg" width="1600" height="900" alt="Усыпальница Абдул-Баха — общий вид сверху" loading="lazy" decoding="async">
-              </figure>
-            </div>
-            <p class="shrine__credit">Фото и рендеры: <a href="https://news.bahai.org/story/1353/design-concept-shrine-abdulbaha-unveiled" target="_blank" rel="noopener">Bahá’í World News Service</a> · <a href="https://www.bahai.org/the-bab/shrine/" target="_blank" rel="noopener">bahai.org</a></p>
-          </article>
+    <section class="section section--night section--slim" id="glimpse">
+      <div class="wrap wrap--mid reveal">
+        <div class="glimpse">
+          <figure class="glimpse__photo">
+            <img src="assets/shrine-bab.jpg" width="1200" height="800" alt="Усыпальница Баба" loading="lazy" decoding="async">
+          </figure>
+          <div class="glimpse__copy">
+            <p class="tag">Святая земля</p>
+            <h2>Усыпальница Баба</h2>
+            <p>После вознесения Абдул-Баха Его останки были положены в Усыпальнице Баба на горе Кармель. Там Он покоится и сегодня.</p>
+            <p><a class="btn btn--sm btn--line" href="life.html">Читать о Его жизни</a></p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--ivory" id="stories">
-      <div class="wrap">
-        <header class="section__head reveal">
-          <p class="eyebrow">Жизнь</p>
-          <h2>Истории из жизни Абдул-Баха</h2>
-          <div class="orn" aria-hidden="true"><svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></div>
-          <p class="lead">Три коротких рассказа — о служении, путешествии и верности Завету. Полную историю читайте на странице жизни.</p>
-          <p style="margin-top:1.2rem"><a class="btn btn--ink" href="life.html">Открыть историю жизни</a></p>
-        </header>
-
-        <div class="stories">
-          <article class="story reveal">
-            <div class="story__img">
-              <img src="assets/story-service.jpg" width="900" height="675" alt="Стол гостеприимства и служения" loading="lazy">
-            </div>
-            <div class="story__body">
-              <h3>Служение в Акке</h3>
-              <p>В годы заточения Он ходил к бедным и больным, делился хлебом, утешал семьи. Для Него служение не было «делом на потом» — это было дыхание каждого дня. Люди разных вер видели в Нём друга.</p>
-            </div>
-          </article>
-
-          <article class="story reveal">
-            <div class="story__img">
-              <img src="assets/story-west.jpg" width="900" height="675" alt="Путешествие на Запад" loading="lazy">
-            </div>
-            <div class="story__body">
-              <h3>Путешествия на Запад</h3>
-              <p>В 1911–1913 годах, уже в преклонном возрасте, Он отправился в Европу и Америку. В залах и домах Он говорил о единстве религий, мире и достоинстве каждого человека — и сердца открывались Его любви.</p>
-            </div>
-          </article>
-
-          <article class="story reveal">
-            <div class="story__img">
-              <img src="assets/carmel-mountain.jpg" width="1200" height="800" alt="Гора Кармель" loading="lazy">
-            </div>
-            <div class="story__body">
-              <h3>Усыпальница Баба</h3>
-              <p>Бахаулла поручил Ему возвести достойную Усыпальницу Баба на Кармеле. Сквозь препятствия и клевету Он довёл дело до конца и в день Навруза 1909 года сам упокоил священные останки — акт верности и любви.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="quotes" aria-label="Слова Абдул-Баха">
+    <section class="quotes" aria-label="Молитва">
       <div class="wrap wrap--narrow reveal">
         <svg class="quotes__star ico ico--fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star9"/></svg>
         <figure class="qmain">
           <blockquote>
-            <p>«Сделайте меня прахом на пути Твоих возлюбленных.»</p>
+            <p>«О Боже, руководи мной, храни меня, сделай меня светильником ярким и лучезарной звездой.»</p>
           </blockquote>
           <figcaption>Абдул-Баха</figcaption>
         </figure>
@@ -327,51 +202,41 @@
         <p class="invite__time">Сбор с <strong>18:30</strong> · начало в <strong>19:00</strong></p>
         <a class="invite__addr" href="https://yandex.ru/maps/?text=Минск,%20пр.%20Независимости,%2012-30" target="_blank" rel="noopener">
           <svg class="ico ico--line" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
-          Минск, пр. Независимости, 12-30 · Национальный Центр бахаи
+          <span>Минск, <span class="nw">пр.&nbsp;Независимости, 12-30</span></span>
         </a>
+        <p class="invite__place">Национальный Центр бахаи</p>
 
         <div class="invite__maps">
           <a class="btn btn--sm btn--line-dark" href="https://yandex.ru/maps/?text=Минск,%20пр.%20Независимости,%2012-30" target="_blank" rel="noopener">Яндекс Карты</a>
           <a class="btn btn--sm btn--line-dark" href="https://maps.google.com/?q=пр.+Независимости+12-30,+Минск" target="_blank" rel="noopener">Google Карты</a>
+          <a class="btn btn--sm btn--line-dark" href="tel:+375298339652">Позвонить</a>
         </div>
 
         <ul class="invite__list">
-          <li>Вечер проходит на русском языке.</li>
-          <li>Приходите как есть — особого вида не требуется.</li>
-          <li>Будут беседы, фильм, песни, номера и угощения.</li>
-          <li>Можно принести что-нибудь к общему столу.</li>
-          <li>Дети — желанные гости. Двери открыты для всех.</li>
+          <li>Вечер на русском языке.</li>
+          <li>Приходите как есть.</li>
+          <li>Дети желанны. Двери открыты для всех.</li>
         </ul>
 
         <div class="invite__cta">
           <button type="button" class="btn btn--lg btn--gold js-rsvp" data-source="when">Я приду</button>
         </div>
-        <p class="invite__host">Ответственный: <strong>Малышев Сергей</strong></p>
-      </div>
-    </section>
-
-    <section class="rsvp" id="rsvp">
-      <div class="wrap wrap--narrow reveal">
-        <h2>Скажите, что придёте</h2>
-        <p>Нажмите смиренно — откроется молитва Абдул-Баха, и вы войдёте в историю Его жизни.</p>
-        <button type="button" class="btn btn--lg btn--gold js-rsvp" data-source="rsvp" id="rsvp-btn">Я приду</button>
-        <p class="rsvp__status" id="rsvp-status" aria-live="polite"></p>
+        <p class="invite__host">Организует <strong>Местное Духовное Собрание Минска</strong></p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="wrap">
-      <div class="footer__brand">Абдул-Баха · День Завета</div>
-      <p>Минск · 26 ноября · сбор 18:30 · начало 19:00</p>
-      <p style="margin-top:.6rem">Организатор: Малышев Сергей</p>
+      <div class="footer__brand">День Завета · Минск</div>
+      <p>26 ноября · сбор 18:30 · начало 19:00</p>
+      <p style="margin-top:.6rem">МДС Минска · <a href="tel:+375298339652">+375&nbsp;29&nbsp;833-96-52</a></p>
       <a class="top" href="#top">Наверх</a>
     </div>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Молитва → переход к истории жизни -->
   <div class="veil" id="prayer-veil" hidden aria-hidden="true">
     <div class="veil__glow" aria-hidden="true"></div>
     <div class="veil__star" aria-hidden="true">
@@ -391,6 +256,7 @@
       </blockquote>
       <p class="veil__author">Абдул-Баха</p>
       <button type="button" class="btn btn--lg btn--gold" id="veil-continue">К истории Его жизни</button>
+      <p class="veil__skip"><button type="button" class="veil__skip-btn" id="veil-close">Вернуться к приглашению</button></p>
     </div>
   </div>
 
