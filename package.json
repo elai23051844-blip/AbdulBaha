@@ -1,0 +1,13 @@
+{
+  "name": "abdul-baha-invitation",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Приглашение на День Завета · Абдул-Баха · 26 ноября",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
