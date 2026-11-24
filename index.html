@@ -34,7 +34,7 @@
 <body>
   <svg class="sprite" aria-hidden="true" focusable="false">
     <symbol id="i-star9" viewBox="0 0 24 24">
-      <path d="M12.00,2.00 L13.44,8.05 L18.43,4.34 L15.64,9.90 L21.85,10.26 L16.14,12.73 L20.66,17.00 L14.70,15.22 L15.42,21.40 L12.00,16.20 L8.58,21.40 L9.30,15.22 L3.34,17.00 L7.86,12.73 L2.15,10.26 L8.36,9.90 L5.57,4.34 L10.56,8.05Z"/>
+      <path d="M12.000,2.000 L13.710,7.302 L18.428,4.340 L16.330,9.500 L21.848,10.264 L16.924,12.868 L20.660,17.000 L15.214,15.830 L15.420,21.397 L12.000,17.000 L8.580,21.397 L8.786,15.830 L3.340,17.000 L7.076,12.868 L2.152,10.264 L7.670,9.500 L5.572,4.340 L10.290,7.302 Z"/>
     </symbol>
     <symbol id="i-clock" viewBox="0 0 24 24">
       <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
@@ -56,7 +56,7 @@
       <a href="#stories">Истории</a>
       <a href="#when">Когда и где</a>
     </nav>
-    <a class="btn btn--sm btn--gold" href="#rsvp">Я приду</a>
+    <button type="button" class="btn btn--sm btn--gold js-rsvp" data-source="nav">Я приду</button>
   </header>
 
   <main>
@@ -73,12 +73,12 @@
           <circle class="orbit" cx="100" cy="100" r="94" stroke="rgba(246,214,128,.28)" stroke-width="1"/>
           <circle class="orbit orbit--mid" cx="100" cy="100" r="78" stroke="rgba(246,214,128,.4)" stroke-width="1" stroke-dasharray="4 10"/>
           <circle class="orbit" cx="100" cy="100" r="58" stroke="rgba(246,214,128,.5)" stroke-width="1"/>
-          <!-- Девятиконечная звезда бахаи — вращается целиком -->
-          <path d="M100.00,22.00 L110.94,69.93 L150.14,40.25 L127.71,84.00 L176.82,86.46 L131.51,105.56 L167.55,139.00 L120.57,124.51 L126.68,173.30 L100.00,132.00 L73.32,173.30 L79.43,124.51 L32.45,139.00 L68.49,105.56 L23.18,86.46 L72.29,84.00 L49.86,40.25 L89.06,69.93Z" fill="url(#g)" opacity=".96"/>
-          <circle cx="100" cy="100" r="7" fill="#FFF4C9"/>
+          <!-- Ровная девятиконечная звезда бахаи -->
+          <path class="star9-path" d="M100.000,20.000 L113.681,62.412 L151.423,38.716 L134.641,80.000 L178.785,86.108 L139.392,106.946 L169.282,140.000 L125.712,130.642 L127.362,175.175 L100.000,140.000 L72.638,175.175 L74.288,130.642 L30.718,140.000 L60.608,106.946 L21.215,86.108 L65.359,80.000 L48.577,38.716 L86.319,62.412 Z" fill="url(#g)" opacity=".97"/>
+          <circle cx="100" cy="100" r="6" fill="#FFF8E0"/>
           <defs>
-            <linearGradient id="g" x1="100" y1="22" x2="100" y2="173" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#FFF4C9"/><stop offset="1" stop-color="#C99530"/>
+            <linearGradient id="g" x1="100" y1="20" x2="100" y2="175" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FFF8E0"/><stop offset=".45" stop-color="#F1D68A"/><stop offset="1" stop-color="#C99530"/>
             </linearGradient>
           </defs>
         </svg>
@@ -110,7 +110,7 @@
           <button type="button" class="btn btn--lg btn--gold js-rsvp" data-source="hero">Я приду</button>
           <a class="btn btn--lg btn--line" href="#program">Программа</a>
         </div>
-        <p class="hero__note">Одно нажатие — и организатор узнает, что вы будете.</p>
+        <p class="hero__note">Нажмите — откроется молитва, а затем история Его жизни.</p>
       </div>
     </section>
 
@@ -260,7 +260,8 @@
           <p class="eyebrow">Жизнь</p>
           <h2>Истории из жизни Абдул-Баха</h2>
           <div class="orn" aria-hidden="true"><svg class="ico ico--fill" viewBox="0 0 24 24"><use href="#i-star9"/></svg></div>
-          <p class="lead">Три коротких рассказа — о служении, путешествии и верности Завету.</p>
+          <p class="lead">Три коротких рассказа — о служении, путешествии и верности Завету. Полную историю читайте на странице жизни.</p>
+          <p style="margin-top:1.2rem"><a class="btn btn--ink" href="life.html">Открыть историю жизни</a></p>
         </header>
 
         <div class="stories">
@@ -352,7 +353,7 @@
     <section class="rsvp" id="rsvp">
       <div class="wrap wrap--narrow reveal">
         <h2>Скажите, что придёте</h2>
-        <p>Нажмите смиренно — и сообщение «Я приду» придёт организатору.</p>
+        <p>Нажмите смиренно — откроется молитва Абдул-Баха, и вы войдёте в историю Его жизни.</p>
         <button type="button" class="btn btn--lg btn--gold js-rsvp" data-source="rsvp" id="rsvp-btn">Я приду</button>
         <p class="rsvp__status" id="rsvp-status" aria-live="polite"></p>
       </div>
@@ -369,6 +370,30 @@
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Молитва → переход к истории жизни -->
+  <div class="veil" id="prayer-veil" hidden aria-hidden="true">
+    <div class="veil__glow" aria-hidden="true"></div>
+    <div class="veil__star" aria-hidden="true">
+      <svg viewBox="0 0 200 200" class="veil__star-svg">
+        <path fill="url(#vg)" d="M100.000,20.000 L113.681,62.412 L151.423,38.716 L134.641,80.000 L178.785,86.108 L139.392,106.946 L169.282,140.000 L125.712,130.642 L127.362,175.175 L100.000,140.000 L72.638,175.175 L74.288,130.642 L30.718,140.000 L60.608,106.946 L21.215,86.108 L65.359,80.000 L48.577,38.716 L86.319,62.412 Z"/>
+        <defs>
+          <linearGradient id="vg" x1="100" y1="20" x2="100" y2="175" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FFF8E0"/><stop offset="1" stop-color="#E6BC5E"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="veil__content">
+      <p class="veil__eyebrow">Молитва Абдул-Баха</p>
+      <blockquote class="veil__prayer" id="veil-prayer">
+        <p>О Боже, руководи мной, храни меня, сделай меня светильником ярким и лучезарной звездой. Ты Могуществен и Силён.</p>
+      </blockquote>
+      <p class="veil__author">Абдул-Баха</p>
+      <button type="button" class="btn btn--lg btn--gold" id="veil-continue">К истории Его жизни</button>
+    </div>
+  </div>
+
   <script src="main.js" defer></script>
 </body>
 </html>

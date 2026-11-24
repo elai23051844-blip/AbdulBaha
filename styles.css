@@ -955,6 +955,96 @@ button { font: inherit; color: inherit }
   transform: translate(-50%, 0);
 }
 
+/* ---------- Молитвенная завеса ---------- */
+.veil {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(20, 35, 74, .55), rgba(4, 8, 20, .96));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .9s var(--ease);
+}
+.veil.is-on {
+  opacity: 1;
+  pointer-events: auto;
+}
+.veil.is-leaving {
+  opacity: 0;
+  transition: opacity 1.1s var(--ease);
+}
+.veil__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(246, 214, 128, .28), transparent 42%),
+    radial-gradient(circle at 30% 20%, rgba(160, 120, 255, .12), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255, 160, 90, .1), transparent 45%);
+  animation: veilPulse 5s ease-in-out infinite;
+}
+@keyframes veilPulse {
+  0%, 100% { opacity: .7; transform: scale(1) }
+  50% { opacity: 1; transform: scale(1.06) }
+}
+.veil__star {
+  position: absolute;
+  width: min(42vw, 220px);
+  aspect-ratio: 1;
+  top: 12%;
+  filter: drop-shadow(0 0 28px rgba(246, 214, 128, .55));
+  animation: starSpin 28s linear infinite, emblemFloat 6s ease-in-out infinite;
+}
+.veil__star-svg { width: 100%; height: 100%; display: block }
+.veil__content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 560px);
+  text-align: center;
+  color: var(--ivory-50);
+  transform: translateY(18px);
+  opacity: 0;
+  transition: opacity 1s .35s var(--ease), transform 1s .35s var(--ease);
+}
+.veil.is-on .veil__content {
+  opacity: 1;
+  transform: none;
+}
+.veil__eyebrow {
+  margin: 0 0 1rem;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--gold-300);
+}
+.veil__prayer p {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.45rem, 4.2vw, 2.15rem);
+  line-height: 1.35;
+  color: #FFF6D8;
+  text-wrap: balance;
+  text-shadow: 0 0 40px rgba(246, 214, 128, .25);
+}
+.veil__prayer.is-typing p {
+  background: linear-gradient(90deg, #FFF6D8 0%, #FFF6D8 100%);
+  -webkit-background-clip: text;
+}
+.veil__author {
+  margin: 1.3rem 0 1.8rem;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+body.veil-lock { overflow: hidden }
+
 /* ---------- Reveal ---------- */
 .reveal {
   opacity: 0;

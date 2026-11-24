@@ -1,5 +1,4 @@
-/* Абдул-Баха · День Завета — приглашение
-   Без сборки: работает с диска и на Vercel. */
+/* Абдул-Баха · День Завета — приглашение */
 (function () {
   'use strict';
 
@@ -77,7 +76,66 @@
     items.forEach(function (el) { io.observe(el); });
   })();
 
-  /* RSVP → Telegram */
+  /* Молитва → история жизни */
+  var veil = $('#prayer-veil');
+  var veilContinue = $('#veil-continue');
+  var prayerEl = $('#veil-prayer');
+  var PRAYER = 'О Боже, руководи мной, храни меня, сделай меня светильником ярким и лучезарной звездой. Ты Могуществен и Силён.';
+
+  function typePrayer(done) {
+    if (!prayerEl) { if (done) done(); return; }
+    var p = prayerEl.querySelector('p');
+    if (!p) { if (done) done(); return; }
+    if (reduceMotion) {
+      p.textContent = PRAYER;
+      if (done) done();
+      return;
+    }
+    p.textContent = '';
+    prayerEl.classList.add('is-typing');
+    var i = 0;
+    var timer = setInterval(function () {
+      i += 1;
+      p.textContent = PRAYER.slice(0, i);
+      if (i >= PRAYER.length) {
+        clearInterval(timer);
+        prayerEl.classList.remove('is-typing');
+        if (done) done();
+      }
+    }, 28);
+  }
+
+  function openVeil() {
+    if (!veil) {
+      location.href = 'life.html';
+      return;
+    }
+    veil.hidden = false;
+    veil.setAttribute('aria-hidden', 'false');
+    doc.body.classList.add('veil-lock');
+    requestAnimationFrame(function () {
+      veil.classList.add('is-on');
+      typePrayer(null);
+    });
+  }
+
+  function goToLife() {
+    if (!veil) {
+      location.href = 'life.html';
+      return;
+    }
+    veil.classList.add('is-leaving');
+    veil.classList.remove('is-on');
+    setTimeout(function () {
+      location.href = 'life.html';
+    }, reduceMotion ? 0 : 900);
+  }
+
+  if (veilContinue) {
+    veilContinue.addEventListener('click', goToLife);
+  }
+
+  /* RSVP + молитвенный путь */
   (function rsvp() {
     var buttons = $$('.js-rsvp');
     if (!buttons.length) { return; }
@@ -87,44 +145,16 @@
     var API_URL = API_BASE + '/api/rsvp';
     var statusEl = $('#rsvp-status');
     var busy = false;
-    var done = false;
 
     function setStatus(text) {
       if (statusEl) { statusEl.textContent = text || ''; }
     }
 
-    function setBusy(on) {
-      busy = on;
-      buttons.forEach(function (btn) {
-        btn.disabled = on || done;
-        if (done) { btn.textContent = 'До встречи'; }
-      });
-    }
+    function notifyThenVeil(source) {
+      setStatus('Открываем молитву…');
+      openVeil();
 
-    function markDone() {
-      done = true;
-      setBusy(false);
-      setStatus('Спасибо. Мы будем вас ждать.');
-      toast('Принято — до встречи 26 ноября');
-    }
-
-    /* На GitHub Pages нет /api — открываем Telegram с готовым текстом организатору */
-    function sendViaTelegramApp() {
-      var text = encodeURIComponent('Я приду на День Завета · 26 ноября · 19:00 · Национальный Центр бахаи');
-      var url = 'https://t.me/share/url?url=' + encodeURIComponent(location.href.split('#')[0]) + '&text=' + text;
-      window.open(url, '_blank', 'noopener');
-      markDone();
-    }
-
-    function send(source) {
-      if (busy || done) { return; }
-      if (!window.fetch) {
-        sendViaTelegramApp();
-        return;
-      }
-      setBusy(true);
-      setStatus('Отправляем…');
-
+      if (!window.fetch) { return; }
       fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -133,36 +163,24 @@
           source: source || 'page',
           event: 'День Завета · 26 ноября · 19:00'
         })
-      })
-        .then(function (res) {
-          return res.json().then(function (data) {
-            return { ok: res.ok, status: res.status, data: data };
-          }).catch(function () {
-            return { ok: res.ok, status: res.status, data: {} };
-          });
-        })
-        .then(function (result) {
-          if (result.ok && result.data && result.data.ok !== false) {
-            markDone();
-            return;
-          }
-          /* 404 на GitHub Pages — запасной путь через Telegram */
-          if (result.status === 404 || result.status === 405 || location.hostname.indexOf('github.io') !== -1) {
-            sendViaTelegramApp();
-            return;
-          }
-          var err = (result.data && (result.data.error || result.data.description)) || 'Не удалось отправить';
-          setBusy(false);
-          setStatus(err);
-          toast(err);
-        })
-        .catch(function () {
-          sendViaTelegramApp();
-        });
+      }).catch(function () { /* на GitHub Pages API нет — это нормально */ });
+    }
+
+    function send(source) {
+      if (busy) { return; }
+      busy = true;
+      buttons.forEach(function (btn) { btn.disabled = true; });
+      toast('Я приду…');
+      notifyThenVeil(source);
+      setTimeout(function () {
+        busy = false;
+        buttons.forEach(function (btn) { btn.disabled = false; });
+      }, 1200);
     }
 
     buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
         send(btn.getAttribute('data-source') || 'page');
       });
     });

@@ -1,0 +1,113 @@
+.life-page { background: var(--ivory-100); }
+.life-main { padding: calc(var(--nav-h) + 28px) 0 80px; }
+.life-hero {
+  text-align: center;
+  padding: clamp(40px, 8vw, 80px) 20px 36px;
+  color: var(--ivory-50);
+  background: radial-gradient(700px 380px at 50% 0%, rgba(230, 188, 94, .16), transparent 70%), linear-gradient(180deg, #0B1630, #070D1F);
+}
+.life-hero h1 {
+  font-size: clamp(2.6rem, 7vw, 4.8rem);
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.life-hero__sub {
+  margin: .6rem auto 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  color: #F6E7BD;
+}
+.life-hero__src {
+  margin: 1.2rem auto 0;
+  max-width: 36rem;
+  font-size: .82rem;
+  color: rgba(254, 251, 243, .65);
+}
+.life-hero__src a { color: var(--gold-300); }
+
+.life-article {
+  width: min(100% - 40px, 720px);
+  margin: clamp(36px, 6vw, 64px) auto 0;
+}
+.life-article section { margin-bottom: 2rem }
+.life-article h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  color: var(--night-800);
+  margin-bottom: .7rem;
+}
+.life-article p {
+  color: var(--ink-2);
+  margin: 0 0 1em;
+  font-size: 1.05rem;
+}
+.life-quote {
+  margin: 2.5rem 0;
+  padding: 1.6rem 1.4rem;
+  text-align: center;
+  background: var(--night-800);
+  color: var(--ivory-50);
+}
+.life-quote p {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--ivory-50);
+}
+.life-quote cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: .74rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold-300);
+}
+
+.life-stories {
+  width: min(100% - 40px, 980px);
+  margin: clamp(48px, 8vw, 90px) auto 0;
+  text-align: center;
+}
+.life-stories .lead {
+  margin: 1rem auto 0;
+  max-width: 34rem;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--ink-2);
+}
+.life-cards {
+  display: grid;
+  gap: 18px;
+  margin-top: 32px;
+  text-align: left;
+}
+@media (min-width: 760px) {
+  .life-cards { grid-template-columns: 1fr 1fr }
+}
+.life-card {
+  padding: 22px 22px 24px;
+  border: 1px solid rgba(169, 122, 40, .28);
+  background: linear-gradient(180deg, #FFFEF8, #F7EED8);
+}
+.life-card h3 {
+  font-size: 1.45rem;
+  color: var(--night-800);
+  margin-bottom: .55rem;
+}
+.life-card p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: .98rem;
+}
+.life-more {
+  margin-top: 28px;
+  font-size: .9rem;
+  color: var(--ink-2);
+}
+.life-more a { color: var(--gold-700); }
+.life-back { text-align: center; margin-top: 48px; }
