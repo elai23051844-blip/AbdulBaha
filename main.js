@@ -101,10 +101,25 @@
       });
     }
 
+    function markDone() {
+      done = true;
+      setBusy(false);
+      setStatus('Спасибо. Мы будем вас ждать.');
+      toast('Принято — до встречи 26 ноября');
+    }
+
+    /* На GitHub Pages нет /api — открываем Telegram с готовым текстом организатору */
+    function sendViaTelegramApp() {
+      var text = encodeURIComponent('Я приду на День Завета · 26 ноября · 19:00 · Национальный Центр бахаи');
+      var url = 'https://t.me/share/url?url=' + encodeURIComponent(location.href.split('#')[0]) + '&text=' + text;
+      window.open(url, '_blank', 'noopener');
+      markDone();
+    }
+
     function send(source) {
       if (busy || done) { return; }
       if (!window.fetch) {
-        toast('Откройте страницу в современном браузере');
+        sendViaTelegramApp();
         return;
       }
       setBusy(true);
@@ -121,17 +136,19 @@
       })
         .then(function (res) {
           return res.json().then(function (data) {
-            return { ok: res.ok, data: data };
+            return { ok: res.ok, status: res.status, data: data };
           }).catch(function () {
-            return { ok: res.ok, data: {} };
+            return { ok: res.ok, status: res.status, data: {} };
           });
         })
         .then(function (result) {
           if (result.ok && result.data && result.data.ok !== false) {
-            done = true;
-            setBusy(false);
-            setStatus('Спасибо. Мы будем вас ждать.');
-            toast('Принято — до встречи 26 ноября');
+            markDone();
+            return;
+          }
+          /* 404 на GitHub Pages — запасной путь через Telegram */
+          if (result.status === 404 || result.status === 405 || location.hostname.indexOf('github.io') !== -1) {
+            sendViaTelegramApp();
             return;
           }
           var err = (result.data && (result.data.error || result.data.description)) || 'Не удалось отправить';
@@ -140,9 +157,7 @@
           toast(err);
         })
         .catch(function () {
-          setBusy(false);
-          setStatus('Нет связи с сервером. Попробуйте ещё раз.');
-          toast('Нет связи с сервером');
+          sendViaTelegramApp();
         });
     }
 

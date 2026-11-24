@@ -11,6 +11,16 @@
   <meta property="og:description" content="Приглашаем вас на праздник в Национальный Центр бахаи. Сбор с 18:30, начало в 19:00.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/abdul-baha-portrait.jpg">
+  <script>
+    (function () {
+      var path = location.pathname || '';
+      if (location.hostname.indexOf('github.io') !== -1 && path.indexOf('/AbdulBaha') === 0) {
+        var b = document.createElement('base');
+        b.href = '/AbdulBaha/';
+        document.head.insertBefore(b, document.head.firstChild);
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap&subset=cyrillic,latin" rel="stylesheet">
