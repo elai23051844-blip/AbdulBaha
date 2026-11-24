@@ -4,3 +4,15 @@
 node_modules
 .DS_Store
 Thumbs.db
+
+# temp downloads
+assets/_*.html
+assets/_*.jpg
+assets/bab-try*.jpg
+assets/shrine-official-*.jpg
+assets/trellis-*.jpg
+assets/shrine-bab-*.jpg
+assets/shrine-glass.jpg
+assets/shrine-abdul-baha-wide-temp.jpg
+assets/abdul-baha-header.jpg
+assets/star9.jpg

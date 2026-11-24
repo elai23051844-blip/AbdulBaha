@@ -30,11 +30,16 @@
       var s = doc.createElement('i');
       var bright = Math.random() < 0.12;
       var size = bright ? 2.4 + Math.random() * 1.2 : 1 + Math.random() * 1.3;
+      var dx = ((Math.random() * 2 - 1) * (18 + Math.random() * 28)).toFixed(1) + 'px';
+      var dy = ((Math.random() * 2 - 1) * (14 + Math.random() * 36)).toFixed(1) + 'px';
       s.style.left = (Math.random() * 100).toFixed(2) + '%';
       s.style.top = (Math.pow(Math.random(), 1.5) * 82).toFixed(2) + '%';
       s.style.width = s.style.height = size.toFixed(2) + 'px';
       s.style.setProperty('--d', (3 + Math.random() * 5).toFixed(2) + 's');
       s.style.setProperty('--l', (-Math.random() * 8).toFixed(2) + 's');
+      s.style.setProperty('--drift', (22 + Math.random() * 40).toFixed(1) + 's');
+      s.style.setProperty('--dx', dx);
+      s.style.setProperty('--dy', dy);
       if (bright) { s.className = 'b'; }
       frag.appendChild(s);
     }
